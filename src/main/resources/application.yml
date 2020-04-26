@@ -1,0 +1,22 @@
+chh:
+  # chh主站地址
+  url: https://www.chiphell.com/
+  # 出售发布区标准版地址
+  sell-url: https://www.chiphell.com/forum.php?mod=forumdisplay&fid=26&filter=author&orderby=dateline&mobile=1
+  # 浏览器标识
+  user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 11_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.0 Mobile/15E148 Safari/604.1
+  # 用户cookie，浏览器中获取
+  cookie:
+# 钉钉机器人配置
+dingtalk:
+  # 钉钉机器人地址
+  url:
+  # at群内用户
+  at-user-list:
+    # 用户手机号
+    131xxxxxxxx:
+      # 关键字列表
+      - k1
+      - k2
+    132xxxxxxxx:
+      - k3
