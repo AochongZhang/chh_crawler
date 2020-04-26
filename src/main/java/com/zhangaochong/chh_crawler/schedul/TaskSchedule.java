@@ -30,6 +30,7 @@ public class TaskSchedule {
         }
         if (!lastId.equals(message.getId())) {
             dingtalkSendMessageService.send(message);
+            lastId = message.getId();
         }
         log.info("[执行完成] ----------------------------------");
     }
