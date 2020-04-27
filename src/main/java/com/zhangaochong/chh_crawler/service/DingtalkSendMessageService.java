@@ -32,7 +32,10 @@ public class DingtalkSendMessageService implements SendMessageService {
         sendLink(message.getTitle(),
                 message.getTimeAndReplyNum() + " " + message.getAuthor(),
                 chhProperties.getUrl() + message.getHref());
-        sendText(message.getTitle(), matchAt(message, dingtalkProperties.getAtUserList()));
+        Set<String> atMobileList = matchAt(message, dingtalkProperties.getAtUserList());
+        if (atMobileList.size() != 0) {
+            sendText(message.getTitle(), atMobileList);
+        }
     }
 
     private Set<String> matchAt(Message message, Map<String, List<String>> atUserList) {
