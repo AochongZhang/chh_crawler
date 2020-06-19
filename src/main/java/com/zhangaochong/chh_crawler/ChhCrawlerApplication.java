@@ -28,8 +28,10 @@ public class ChhCrawlerApplication {
 
         log.info("[钉钉机器人配置] url={}", dingtalkProperties.getUrl());
         Map<String, List<String>> atUserList = dingtalkProperties.getAtUserList();
-        for (String mobile : atUserList.keySet()) {
-            log.info("[钉钉机器人配置] atUserList mobile={} keywordList={}", mobile, atUserList.get(mobile));
+        if (atUserList != null) {
+            for (String mobile : atUserList.keySet()) {
+                log.info("[钉钉机器人配置] atUserList mobile={} keywordList={}", mobile, atUserList.get(mobile));
+            }
         }
     }
 

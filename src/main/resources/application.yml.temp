@@ -1,10 +1,8 @@
 chh:
   # chh主站地址
   url: https://www.chiphell.com/
-  # 出售发布区标准版地址
+  # 出售发布区电脑版地址
   sell-url: https://www.chiphell.com/forum.php?mod=forumdisplay&fid=26&filter=author&orderby=dateline&mobile=1
-  # 浏览器标识
-  user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 11_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.0 Mobile/15E148 Safari/604.1
   # 用户cookie，浏览器中获取
   cookie:
 # 钉钉机器人配置

@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,15 +22,16 @@ public class SellChhCrawlerService implements ChhCrawlerService {
     @Override
     public Message exce() throws IOException {
         Document document = Jsoup.connect(chhProperties.getSellUrl())
-                .userAgent(chhProperties.getUserAgent())
                 .header("Cookie", chhProperties.getCookie()).get();
-        Element element = document.selectFirst(".bm_c.bt");
-        Element a = element.children().get(0);
-        Element span = element.children().get(2);
+        Element element = document.selectFirst("[id^='normalthread_']");
+
+        Element a = element.selectFirst(".s.xst");
         String href = a.attr("href");
         String title = a.text();
-        String timeAndReplyNum = span.ownText();
-        String author = span.children().get(0).ownText();
+
+        Element by = element.selectFirst(".by");
+        String timeAndReplyNum = by.selectFirst(".xi1").text();
+        String author = by.selectFirst("a").text();
         Integer id = ParseUtils.parseArticleIdFromHref(href);
         Message message = new Message();
         message.setId(id);
