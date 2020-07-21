@@ -1,6 +1,7 @@
 package com.zhangaochong.chh_crawler.schedul;
 
 import com.zhangaochong.chh_crawler.dto.Message;
+import com.zhangaochong.chh_crawler.properties.ConfigProperties;
 import com.zhangaochong.chh_crawler.service.ChhCrawlerService;
 import com.zhangaochong.chh_crawler.service.SendMessageService;
 import lombok.extern.slf4j.Slf4j;
@@ -19,11 +20,15 @@ public class TaskSchedule {
     @Resource
     private SendMessageService dingtalkSendMessageService;
 
+    @Resource
+    private ConfigProperties configProperties;
+
     private static Integer lastId = 0;
 
     @Scheduled(fixedRate = 10000L)
     private void getSellArticle() throws IOException {
         log.info("[开始执行] ----------------------------------");
+        log.info("config.version: {}", configProperties.getVersion());
         Message message = sellChhCrawlerService.exce();
         if (lastId == 0) {
             lastId = message.getId();
