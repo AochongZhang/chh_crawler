@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: nacos:8848
+        file-extension: yaml
+  application:
+    name: chh-crawler
