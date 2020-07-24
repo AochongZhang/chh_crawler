@@ -20,7 +20,7 @@ public class SellChhCrawlerService implements ChhCrawlerService {
     private ChhProperties chhProperties;
 
     @Override
-    public Message exce() throws IOException {
+    public Message exec() throws IOException {
         Document document = Jsoup.connect(chhProperties.getSellUrl())
                 .header("Cookie", chhProperties.getCookie()).get();
         Element element = document.selectFirst("[id^='normalthread_']");

@@ -29,7 +29,7 @@ public class TaskSchedule {
     private void getSellArticle() throws IOException {
         log.info("[开始执行] ----------------------------------");
         log.info("config.version: {}", configProperties.getVersion());
-        Message message = sellChhCrawlerService.exce();
+        Message message = sellChhCrawlerService.exec();
         if (lastId == 0) {
             lastId = message.getId();
         }
