@@ -13,10 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -39,6 +36,9 @@ public class DingtalkSendMessageService implements SendMessageService {
     }
 
     private Set<String> matchAt(Message message, Map<String, List<String>> atUserList) {
+        if (atUserList == null || atUserList.size() == 0) {
+            return Collections.emptySet();
+        }
         String title = message.getTitle().toLowerCase().replace(" ", "");
         Set<String> atMobileList = new HashSet<>();
         for (String mobile : atUserList.keySet()) {
