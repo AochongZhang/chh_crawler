@@ -22,16 +22,17 @@ public class SellChhCrawlerService implements ChhCrawlerService {
     @Override
     public Message exec() throws IOException {
         Document document = Jsoup.connect(chhProperties.getSellUrl())
-                .header("Cookie", chhProperties.getCookie()).get();
-        Element element = document.selectFirst("[id^='normalthread_']");
+                .header("cookie", chhProperties.getCookie())
+                .header("User-Agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1").get();
+        Element element = document.selectFirst(".bm_c.bt");
 
-        Element a = element.selectFirst(".s.xst");
+        Element a = element.selectFirst("a");
         String href = a.attr("href");
         String title = a.text();
 
-        Element by = element.selectFirst(".by");
-        String timeAndReplyNum = by.selectFirst(".xi1").text();
-        String author = by.selectFirst("a").text();
+        Element span = element.selectFirst(".xg1");
+        String timeAndReplyNum = span.ownText();
+        String author = span.selectFirst("a").text();
         Integer id = ParseUtils.parseArticleIdFromHref(href);
         Message message = new Message();
         message.setId(id);
